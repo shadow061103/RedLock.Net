@@ -1,0 +1,30 @@
+<Project>
+	<PropertyGroup>
+		<AssemblyVersion>2.3.2.0</AssemblyVersion>
+		<Version>2.3.2</Version>
+		<FileVersion>$(Version)</FileVersion>
+		<Authors>Sam Cook</Authors>
+		<Company />
+		<Product>RedLock.net</Product>
+		<Copyright>Copyright $([System.DateTime]::Now.Year) Sam Cook</Copyright>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageProjectUrl>https://github.com/samcook/RedLock.net</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/samcook/RedLock.net</RepositoryUrl>
+		<PackageIcon>redlock-icon.png</PackageIcon>
+		<PackageIconUrl>https://raw.githubusercontent.com/samcook/RedLock.net/master/redlock-icon.png</PackageIconUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageTags>RedLock Redis Distributed Lock</PackageTags>
+		<PackageReleaseNotes>
+			Note: RedLock 2.2.0+ requires StackExchange.Redis 2.0+ - if you need to use StackExchange.Redis 1.x please continue to use RedLock.net 2.1.0.
+
+			2.3.2 - Fix for issue introduced in 2.3.1 where locks failed to extend in certain circumstances.
+			2.3.1 - Fix MissingMethodException on RedLockFactory.Create() in 2.3.0.
+			2.3.0 - Add support for async unlocking. Add configurable retry settings. Fix rare failure to unlock on dispose issue.
+			2.2.0 - Update to StackExchange.Redis 2.0. Switch to a single strong named package and adjust platform targets to match StackExchange.Redis 2.0.
+			2.1.0 - Add connection change events and more detailed lock status information
+			2.0.0 - .NET Core release
+		</PackageReleaseNotes>
+
+		<NoWarn>CS7035</NoWarn>
+	</PropertyGroup>
+</Project>

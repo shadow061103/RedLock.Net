@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net461;net472;netstandard2.0</TargetFrameworks>
+		<AssemblyName>RedLockNet.SERedis</AssemblyName>
+		<PackageId>RedLock.net</PackageId>
+		<RootNamespace>RedLockNet.SERedis</RootNamespace>
+		<Title>RedLock.net</Title>
+		<Description>An implementation of the Redlock distributed lock algorithm</Description>
+		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+		<SignAssembly>True</SignAssembly>
+		<AssemblyOriginatorKeyFile>..\RedLock.snk</AssemblyOriginatorKeyFile>
+		<TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
+	</PropertyGroup>
+
+	<Target Name="CopyProjectReferencesToPackage" DependsOnTargets="ResolveReferences">
+		<ItemGroup>
+			<BuildOutputInPackage Include="@(ReferenceCopyLocalPaths-&gt;WithMetadataValue('ReferenceSourceTarget', 'ProjectReference'))" />
+		</ItemGroup>
+	</Target>
+
+	<ItemGroup>
+	  <None Remove="Lua\Extend.lua" />
+	  <None Remove="Lua\Unlock.lua" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="..\redlock-icon.png" Link="redlock-icon.png" Pack="true" Visible="false" PackagePath="" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="Lua\Extend.lua" />
+	  <EmbeddedResource Include="Lua\Unlock.lua" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="1.1.0" />
+		<PackageReference Include="StackExchange.Redis" Version="[2.0.513,)" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="[2.0.0,)" />
+		<PackageReference Include="Microsoft.Extensions.Logging" Version="[2.0.0,)" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\RedLockNet.Abstractions\RedLockNet.Abstractions.csproj" PrivateAssets="all" />
+	</ItemGroup>
+
+</Project>

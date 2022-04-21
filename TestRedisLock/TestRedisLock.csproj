@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="StackExchange.Redis" Version="2.5.61" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RedLockNet.Abstractions\RedLockNet.Abstractions.csproj" />
+    <ProjectReference Include="..\RedLockNet.SERedis\RedLockNet.SERedis.csproj" />
+  </ItemGroup>
+
+</Project>
